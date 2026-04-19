@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Parking - Hệ thống điều khiển</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1e1e2f;
+            color: #ffffff;
+            text-align: center;
+            margin: 0;
+            padding: 50px 20px;
+        }
+        .container {
+            background-color: #2a2a40;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            color: #4facfe;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #8e8e9f;
+            font-size: 16px;
+            margin-bottom: 40px;
+        }
+        .status-box {
+            background-color: #1e1e2f;
+            border: 2px solid #4facfe;
+            padding: 25px;
+            border-radius: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #00f2fe;
+            transition: all 0.3s ease;
+        }
+        /* Hiệu ứng nhấp nháy chữ mượt mà */
+        .status-box.active {
+            border-color: #00ff87;
+            color: #00ff87;
+            box-shadow: 0 0 15px rgba(0, 255, 135, 0.3);
+        }
+        .status-box.error {
+            border-color: #ff4b4b;
+            color: #ff4b4b;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>📡 NHÀ XE THÔNG MINH</h1>
+        <div class="subtitle">Trung tâm điều khiển</div>
+        
+        <p style="color: #a0a0b0; text-transform: uppercase; font-size: 12px; letter-spacing: 2px;">Trạng thái hệ thống trực tiếp</p>
+        <div id="status-display" class="status-box">
+            Đang tải dữ liệu...
+        </div>
+    </div>
+
+    <script>
+        function fetchStatus() {
+            fetch('/get_status')
+                .then(response => response.json())
+                .then(data => {
+                    const statusBox = document.getElementById('status-display');
+                    statusBox.innerText = data.status;
+                    
+                    // Đổi màu sắc tùy theo trạng thái
+                    if (data.status.includes("Đang mở") || data.status.includes("Phát hiện")) {
+                        statusBox.className = "status-box active";
+                    } else if (data.status.includes("Lỗi")) {
+                        statusBox.className = "status-box error";
+                    } else {
+                        statusBox.className = "status-box";
+                    }
+                })
+                .catch(error => console.error("Lỗi kết nối Server:", error));
+        }
+
+        // Cứ mỗi 1 giây (1000ms) sẽ tự động hỏi Server 1 lần
+        setInterval(fetchStatus, 1000);
+        
+        // Gọi lần đầu tiên ngay khi tải trang xong
+        fetchStatus();
+    </script>
+
+</body>
+</html>
