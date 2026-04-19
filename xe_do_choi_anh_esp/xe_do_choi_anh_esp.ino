@@ -39,7 +39,6 @@ const char* password = "tuyetnhung";
 
 const char* serverName = "http://192.168.1.7:5000/open_door"; 
 
-// Biến lưu thời gian để chống spam lệnh
 unsigned long lastTriggerTime = 0;
 const unsigned long cooldownTime = 10000; 
 // ---------------------------------------
@@ -220,7 +219,6 @@ void loop()
     for (uint32_t i = 0; i < result.bounding_boxes_count; i++) {
         ei_impulse_result_bounding_box_t bb = result.bounding_boxes[i];
         
-        // 1. Chốt chặn lọc rác
         if (bb.value < 0.85) {
             continue;
         }
@@ -228,11 +226,9 @@ void loop()
             continue; 
         }
         
-        // 2. In tọa độ ra màn hình
         ei_printf("  %s (%f) [ x: %u, y: %u, width: %u, height: %u ]\r\n",
                 bb.label, bb.value, bb.x, bb.y, bb.width, bb.height);
 
-        // 3. LOGIC MỞ CỔNG NHÀ XE THÔNG MINH
         if (millis() - lastTriggerTime > cooldownTime) {
             String detectedCar = String(bb.label);
             if (detectedCar == "Xe vang" || detectedCar == "Xe xanh") {
@@ -252,13 +248,13 @@ void loop()
                     }
                     http.end(); 
                     
-                    lastTriggerTime = millis(); // Bắt đầu đếm ngược 10 giây
+                    lastTriggerTime = millis(); 
                 } else {
                     Serial.println(">>> Loi: Mat ket noi WiFi");
                 }
             }
         }
-    } // <-- ĐÂY LÀ DẤU NGOẶC ĐÓNG VÒNG LẶP FOR (Rất hay bị nhầm)
+    } 
 #else
     ei_printf("Predictions:\r\n");
     for (uint16_t i = 0; i < EI_CLASSIFIER_LABEL_COUNT; i++) {
