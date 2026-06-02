@@ -34,13 +34,13 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 
-const char* ssid = "PhuocHanh";        
-const char* password = "tuyetnhung";     
+const char* ssid = "Nhan ice";        
+const char* password = "12345679";     
 
-const char* serverName = "http://192.168.1.7:5000/open_door"; 
+const char* serverName = "http://172.20.10.13:5000/ai_detect";
 
 unsigned long lastTriggerTime = 0;
-const unsigned long cooldownTime = 10000; 
+const unsigned long cooldownTime = 5000;
 // ---------------------------------------
 // Select camera model - find more camera models in camera_pins.h file here
 // https://github.com/espressif/arduino-esp32/blob/master/libraries/ESP32/examples/Camera/CameraWebServer/camera_pins.h
