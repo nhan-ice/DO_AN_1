@@ -45,7 +45,7 @@ Luồng hoạt động cơ bản:
 ### 🖼️ Kiến trúc hệ thống
 
 <p align="center">
-  <img src="assets/architecture.png" alt="Kiến trúc hệ thống nhà xe thông minh" width="760">
+  <img src="readme_assets/architecture.png" alt="Kiến trúc hệ thống nhà xe thông minh" width="760">
 </p>
 
 ---
@@ -115,15 +115,15 @@ ESP32-CAM sử dụng cơ chế cooldown. Sau khi gửi lệnh mở cửa thành
 
 
 <p align="center">
-  <img src="assets/esp32-cam.jpg" alt="ESP32-CAM" width="260">
+  <img src="readme_assets/esp32-cam.jpg" alt="ESP32-CAM" width="260">
   &nbsp;&nbsp;
-  <img src="assets/dc-gear-motor.jpg" alt="Động cơ DC giảm tốc" width="260">
+  <img src="readme_assets/dc-gear-motor.jpg" alt="Động cơ DC giảm tốc" width="260">
   &nbsp;&nbsp;
-  <img src="assets/l298n.jpg" alt="Module L298N" width="260">
+  <img src="readme_assets/l298n.jpg" alt="Module L298N" width="260">
 </p>
 
 <p align="center">
-  <img src="assets/hc-sr04.jpg" alt="Cảm biến siêu âm HC-SR04" width="300">
+  <img src="readme_assets/hc-sr04.jpg" alt="Cảm biến siêu âm HC-SR04" width="300">
 </p>
 
 | Thành phần | Vai trò |
@@ -184,7 +184,7 @@ RGB
 Dữ liệu được thu thập bằng chính camera ESP32-CAM nhằm giúp mô hình phù hợp hơn với góc nhìn và đặc tính hình ảnh thực tế của hệ thống.
 
 <p align="center">
-  <img src="assets/training-dataset.jpg" alt="Dữ liệu huấn luyện trong Edge Impulse" width="760">
+  <img src="readme_assets/training-dataset.jpg" alt="Dữ liệu huấn luyện trong Edge Impulse" width="760">
 </p>
 
 Thuật toán phát hiện đối tượng sử dụng **FOMO (Faster Objects, More Objects)**, phù hợp với các thiết bị có tài nguyên hạn chế.
@@ -209,7 +209,7 @@ Theo kết quả trong báo cáo:
 Trên tập validation, mô hình phân loại chính xác cả ba lớp và không ghi nhận False Positive.
 
 <p align="center">
-  <img src="assets/model-metrics.png" alt="Kết quả đánh giá mô hình Edge Impulse" width="760">
+  <img src="readme_assets/model-metrics.png" alt="Kết quả đánh giá mô hình Edge Impulse" width="760">
 </p>
 
 Trong thử nghiệm thực tế, ESP32-CAM mất khoảng hơn 1 giây để chạy inference và gửi tín hiệu xác nhận. Server sau đó điều khiển ESP32 Motor để mở cửa.
@@ -219,9 +219,9 @@ Trong thử nghiệm thực tế, ESP32-CAM mất khoảng hơn 1 giây để ch
 ## Mô hình thực tế
 
 <p align="center">
-  <img src="assets/prototype-front.jpg" alt="Mô hình nhà xe - góc nhìn phía trước" width="420">
+  <img src="readme_assets/prototype-front.jpg" alt="Mô hình nhà xe - góc nhìn phía trước" width="420">
   &nbsp;&nbsp;
-  <img src="assets/prototype-inside.jpg" alt="Mô hình nhà xe - bố trí phần cứng bên trong" width="420">
+  <img src="readme_assets/prototype-inside.jpg" alt="Mô hình nhà xe - bố trí phần cứng bên trong" width="420">
 </p>
 
 Mô hình thử nghiệm trong báo cáo gồm phần cửa, cảm biến, camera, mạch điều khiển, driver động cơ và cơ cấu truyền động.
@@ -229,15 +229,15 @@ Mô hình thử nghiệm trong báo cáo gồm phần cửa, cảm biến, camer
 ### Giao diện và kết quả kiểm thử
 
 <p align="center">
-  <img src="assets/web-dashboard.jpg" alt="Giao diện web giám sát" width="760">
+  <img src="readme_assets/web-dashboard.jpg" alt="Giao diện web giám sát" width="760">
 </p>
 
 <p align="center">
-  <img src="assets/test-recognized.jpg" alt="Kết quả nhận diện phương tiện" width="300">
+  <img src="readme_assets/test-recognized.jpg" alt="Kết quả nhận diện phương tiện" width="300">
   &nbsp;&nbsp;
-  <img src="assets/test-ai.jpg" alt="Kết quả phân tích AI" width="300">
+  <img src="readme_assets/test-ai.jpg" alt="Kết quả phân tích AI" width="300">
   &nbsp;&nbsp;
-  <img src="assets/test-warning.jpg" alt="Cảnh báo xe lạ" width="300">
+  <img src="readme_assets/test-warning.jpg" alt="Cảnh báo xe lạ" width="300">
 </p>
 
 ---
